@@ -1,32 +1,24 @@
 repeat task.wait() until game:IsLoaded()
 
--- Обходим проверку ключа
-if not script_key then
-    script_key = "bypass_key"
-    _G.script_key = "bypass_key"
-end
+-- 1. СРАЗУ устанавливаем ключ, чтобы обойти любые проверки
+script_key = "valid_key_bypass"
+_G.script_key = "valid_key_bypass"
 
--- Или полностью убрать проверку:
--- Закомментируйте или удалите эти строки:
--- if not script_key then
---     Plr:Kick("You haven't entered a key please enter a key otherwise you wont gain access")
--- end
-
+-- 2. Далее идет оригинальный код без проверки ключа
 local cloneref = cloneref or function(v) return v end
 local Plr = cloneref(game:GetService("Players").LocalPlayer) or game.Players.LocalPlayer
 
 if string.split(identifyexecutor() or "None", " ")[1] == "Xeno" or not identifyexecutor then
-game:GetService("StarterGui"):SetCore("SendNotification", {
-    Title = "Trash Executor",
-    Text = "Your executor may not support certain features, or may be laggy.",
-    Duration = 5
-})
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Trash Executor",
+        Text = "Your executor may not support certain features, or may be laggy.",
+        Duration = 5
+    })
 end
 
-if not script_key then
-    Plr:Kick("You haven't entered a key please enter a key otherwise you wont gain access")
-end
+-- !!! ВАЖНО: Исходная проверка ключа УДАЛЕНА на этом месте !!!
 
+-- 3. Загрузка скрипта для конкретной игры
 if game.GameId == 7649977999 then
     loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/6ef25ea2afe1992a7faf7e4997edf9cf.lua"))() -- live of life
 end
